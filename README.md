@@ -27,6 +27,10 @@ spark.udf.register("getRegionName", (ip:String)=>{db.value.findInfo(ip).getRegio
 spark.sql("SELECT getRegionName(ip)");
 ```
 
+```
+$ spark-shell .. --conf spark.serializer=org.apache.spark.serializer.KryoSerializer --jars ipdbcity-assembly-1.0.1.jar -i test.scala 
+```
+
 ### 编译
 1. 在 build.sbt 中修改为对应的 scala 版本
 2. 执行 `sbt assembly` 
