@@ -22,7 +22,7 @@ import com.se162xg.City;
 import org.apache.spark.SparkFiles;
 sc.addFile("dbv4.ipdb");                                         
 sc.addFile("dbv6.ipdb");
-val db = sc.broadcast(new City(SparkFiles.get("dbv4.ipdb"),SparkFiles.get("dbv4.ipdb")));
+val db = sc.broadcast(new City(SparkFiles.get("dbv4.ipdb"),SparkFiles.get("dbv6.ipdb")));
 spark.udf.register("getRegionName", (ip:String)=>{db.value.findInfo(ip).getRegionName()});
 spark.sql("SELECT getRegionName(ip)");
 ```
